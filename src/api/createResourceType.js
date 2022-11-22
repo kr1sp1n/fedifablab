@@ -1,3 +1,5 @@
 module.exports = ({ db }) => {
-  return (data) => db.insertInto('resource_types', data)
+  return (data) => {
+    if (db.insertInto('resource_types', data)) return data
+  }
 }

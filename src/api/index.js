@@ -1,18 +1,24 @@
 module.exports = (config) => {
-  return {
-    createResourceType: require('./createResourceType')(config),
-    // updateResourceType,
-    // deleteResourceType,
-    createResource: require('./createResource')(config),
-    // updateResource,
-    // deleteResource,
-    // createAgent,
-    // updateAgent,
-    // deleteAgent,
-    // createAgentType,
-    // updateAgentType,
-    // deleteAgentType,
-    // createEvent,
-    // deleteEvent,
-  }
+  const methods = [
+    'createResourceType',
+    'getResourceTypes',
+    'createResource',
+    'createAgentType'
+    // 'updateResourceType',
+    // 'deleteResourceType',
+    // 'updateResource',
+    // 'deleteResource',
+    // 'createAgent',
+    // 'updateAgent',
+    // 'deleteAgent',
+    // 'updateAgentType',
+    // 'deleteAgentType',
+    // 'createEvent',
+    // 'deleteEvent',
+  ]
+  const index = {}
+  methods.forEach((method) => {
+    index[method] = require(`./${method}`)(config)
+  })
+  return index
 }

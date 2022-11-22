@@ -4,14 +4,17 @@ const db = require('../src/db')(config)
 config.db = db
 const api = require('../src/api')(config)
 
-const resourceType = { id: '01GJ691VXEPQYS198W9F9AV0FQ', name: 'Lastenfahrrad' }
-api.createResourceType(resourceType)
-
-const type = resourceType.id
-const resources = [
-  { name: 'Lastenfahrrad 1' },
-  { name: 'Lastenfahrrad 2' },
+const resourceTypes = [
+  'Lastenfahrrad',
+  '3D Drucker',
+  'Heißluftpistole'
 ]
-resources.forEach((props) => {
-  api.createResource(type, { props })
-})
+
+for(let i = 0; i < resourceTypes.length; i++) {
+  const name = resourceTypes[i]
+  const resourceType = api.createResourceType({ name })
+  for (let j = 1; j <= 6; j++) {
+    const props = { name: `${resourceType.name} ${j}`}
+    api.createResource(resourceType.name, { props })
+  }
+}

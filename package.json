@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "NODE_ENV=test tape test/*",
+    "test": "NODE_ENV=test tape test/unit/*",
+    "test:unit": "npm test",
+    "test:integration": "NODE_ENV=test tape test/integration/*",
     "test:watch": "nodemon -x 'npm test'",
     "start": "nodemon",
     "lint": "standard --fix",
@@ -24,7 +26,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
+    "sinon": "^14.0.2",
     "standard": "^17.0.0",
+    "supertest": "^6.3.1",
     "tape": "^5.6.1"
   }
 }

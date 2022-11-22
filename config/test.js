@@ -1,3 +1,4 @@
 module.exports = {
-  dbFile: 'test.sqlite3'
+  dbFile: ':memory:'
+  // dbFile: 'test.sqlite3'
 }
